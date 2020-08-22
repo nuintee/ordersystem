@@ -16,6 +16,10 @@
 
 <style>
 
+    html{
+        font-family:Arial,Meiryo,sans-serif;
+    }
+
     body{
         margin:0;
     }
