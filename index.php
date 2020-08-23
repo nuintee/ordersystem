@@ -16,6 +16,7 @@
         </div>
         
         <p class ="version-txt">Version 1.0</p>
+
     </main>
 
     <style>
@@ -24,6 +25,7 @@
             width:100%;
             height:100%;
             font-family:Arial,Meiryo,sans-serif;
+
         }
 
         body{
@@ -33,6 +35,17 @@
             height:100%;
         }
 
+        h2{
+            margin:32px 0;
+        }
+
+        main{
+            display:flex;
+            width:100%;
+            height:100%;
+            flex-direction:column;
+            justify-content:space-between;
+        }
 
         .nav{
             padding:32px;
@@ -40,7 +53,7 @@
             border:none;
             outline:none;
             cursor:pointer;
-            width:800px;
+            width:100%;
             margin:8px 0;
             color:#FFF;
             text-decoration:none;
@@ -60,6 +73,11 @@
             flex-wrap:wrap;
             padding:0 16px;
         }
+
+        .version-txt{
+            margin:32px 0;
+        }
+
 
     </style>
 </body>

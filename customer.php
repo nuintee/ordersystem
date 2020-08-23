@@ -30,9 +30,17 @@
 
     actionBtn.addEventListener("click",function(){
 
+        /*
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        audioCtx.play();
+        */
+
+
         let sound = new Audio('audio/order.mp3');
 
         sound.play();
+
         
     },false);
 

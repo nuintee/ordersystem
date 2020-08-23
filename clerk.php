@@ -15,11 +15,17 @@
     </div>
 
     <div class ="order-action">
-        <button>注文</button>
+        <button class = "order-btn dis">注文</button>
         <p class ="total-price">1000</p>
-        <button>注文</button>
+        <button  onclick ="remstorage();" class ="order-btn">注文</button>
     </div>
 
+</div>
+
+<div class ="overlay">
+    <div class ="msg-wrapper">
+        <p>注文完了!</p>
+    </div>
 </div>
 
 
@@ -41,6 +47,7 @@
     .overlay{
         display:none;
     }
+    
 
     .overlay.show{
         display:block;
@@ -66,6 +73,36 @@
         margin-bottom:15vh;
     }
 
+    .msg-wrapper{
+        position:absolute;
+        display:flex;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        height:80%;
+        width:80%;
+        background-color:#FFF;
+        text-align:center;
+        border-radius:20px;
+    }
+
+    .msg-wrapper p{
+        align-self:center;
+        width:100%;
+    }
+
+    .order-btn{
+        background:linear-gradient(to right,#5CCDFF , #2B73FF);
+        border:none;
+        outline:none;
+        font-weight:bold;
+        color:#FFF;
+        padding:0 32px;
+    }
+
+    .order-btn.dis{
+        visibility:hidden;
+    }
 
     .order-action{
         position:fixed;
@@ -146,11 +183,19 @@
 
         if(x.classList.contains('added')){
 
+            let arr = [];
+
+            arr.push(child[1].src,child[3].innerHTML,amount);
+
             console.log("contains");
             updateprice();
+            localStorage.setItem(child[2].innerHTML,arr);
+            console.log(arr);
         }
 
         else if(x.classList.contains('added') == false){
+
+            /*
             console.log("nope");
 
             let newLi = document.createElement('li');
@@ -188,8 +233,15 @@
             newLi.appendChild(newBtn2);
 
             orderList.appendChild(newLi);
+            */
 
             x.classList.add('added');
+
+            //LocalStorageSave
+            let arr = [];
+
+            arr.push(child[1].src,child[3].innerHTML,amount);
+            localStorage.setItem(child[2].innerHTML,arr);
         }
 
 
@@ -201,7 +253,46 @@
 
         overlay[0].classList.toggle('show');
 
+        let key = Object.keys(localStorage);
+
+        for (let i = 0; i < localStorage.length; i++) {
+
+                    
+            let val = localStorage.getItem(key[i]);
+
+            let arr = val.split(',');
+
+            let priceArr = [];
+
+            priceArr.push(arr[1]);
+
+            console.log(priceArr);
+
+
+            
+        }
+
+
     },false);
+
+    function remstorage(){
+
+        let overlays = document.querySelectorAll('.overlay');
+
+        overlays[1].classList.add('show');
+
+        overlays[1].addEventListener("click",function(){
+            localStorage.clear();
+
+            //Put Popup here
+
+            window.location.href ="clerk.php";
+            
+        },false);
+
+
+
+    }
     
 
 </script>
