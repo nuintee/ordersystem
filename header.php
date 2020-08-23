@@ -16,8 +16,9 @@
 
 <style>
 
-    html{
+    * {
         font-family:Arial,Meiryo,sans-serif;
+        touch-action:manipulation;
     }
 
     body{
