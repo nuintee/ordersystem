@@ -108,15 +108,13 @@
         transform:translate(25%,-25%);
         z-index:100;
         background:linear-gradient(to right,#5CCDFF , #2B73FF);
-        height:4vh;
-        width:4vh;
         border-radius:100%;
         margin:0;
         box-sizing:border-box;
         color:#fff;
         font-size:11px;
         font-weight:bold;
-        padding:4px;
+        padding:16px;
     }
 
     .item-image{

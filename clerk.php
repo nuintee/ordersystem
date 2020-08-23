@@ -16,7 +16,7 @@
 
     <div class ="order-action">
         <button class = "order-btn dis">注文</button>
-        <p class ="total-price">1000</p>
+        <p class ="total-price">合計: 0円</p>
         <button  onclick ="remstorage();" class ="order-btn">注文</button>
     </div>
 
@@ -253,27 +253,49 @@
 
         overlay[0].classList.toggle('show');
 
-        let key = Object.keys(localStorage);
+        //合計表示場所
+        let tot_price = document.getElementsByClassName('total-price')[0];
 
-        for (let i = 0; i < localStorage.length; i++) {
+        //品物の親元クラス
+        let items = document.getElementsByClassName('added');
+        //小計収納用配列
+        let arr = [];
 
-                    
-            let val = localStorage.getItem(key[i]);
+        //品物の個数分
+        for (let i = 0; i < items.length; i++) {
 
-            let arr = val.split(',');
+            //品物の金額部分指定
+            let price = Number(items[i].children[3].innerHTML);
 
-            let priceArr = [];
+            //品物の量部分指定
+            let amount = items[i].children[0].innerHTML;
 
-            priceArr.push(arr[1]);
+            //金額x量の小計
+            let sub_total = price * amount;
 
-            console.log(priceArr);
+            console.log(sub_total);
 
+            //各々の小計を足す際の変数
+            let add_total = 0;
 
-            
+            //配列に小計を追加
+            arr.push(sub_total);
+
+            //配列の個数分(1要素が1列の積)
+            for (let i = 0; i < arr.length; i++) {
+
+                //配列の個数分変数に積を1つずつ足していく
+                add_total+= arr[i];
+                
+            }
+
+            //合計表示内容の同期
+            tot_price.innerHTML = "合計: " + add_total +"円";
         }
 
-
     },false);
+
+            
 
     function remstorage(){
 
@@ -287,12 +309,14 @@
             //Put Popup here
 
             window.location.href ="clerk.php";
-            
+
         },false);
 
 
 
     }
+
+    
     
 
 </script>
